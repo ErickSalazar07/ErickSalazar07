@@ -26,5 +26,5 @@ busca de aprender nuevas herramientas y mejorar mis habilidades.
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
 </p>
 
-### Colaboracoin
+### Colaboracion
 ¡Estoy abierto a nuevas oportunidades y colaboraciones!
