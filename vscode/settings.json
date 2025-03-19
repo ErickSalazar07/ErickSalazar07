@@ -1,0 +1,254 @@
+{
+    "workbench.sideBar.location": "right",
+    "editor.overviewRulerBorder": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.guides.indentation": false,
+    "indenticator.width": 0.01,
+    "indenticator.color.dark": "rgba(250,250,250,0.200)",
+    "security.workspace.trust.untrustedFiles": "open",
+    "C_Cpp.codeAnalysis.clangTidy.codeAction.showClear": "AllOnly",
+    "editor.fontSize": 27,
+    "terminal.integrated.defaultProfile.windows": "kali-linux (WSL)",
+    "terminal.integrated.fontSize": 18,
+    "debug.console.fontSize": 16,
+    "scm.inputFontSize": 16,
+    "python.defaultInterpreterPath": "C:\\Users\\erick\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "terminal.integrated.profiles.windows": {
+      "PowerShell": {
+        "source": "PowerShell",
+        "icon": "terminal-powershell"
+      },
+      "Command Prompt": {
+        "path": [
+          "${env:windir}\\Sysnative\\cmd.exe",
+          "${env:windir}\\System32\\cmd.exe"
+        ],
+        "args": [],
+        "icon": "terminal-cmd"
+      },
+      "Git Bash": {
+        "source": "Git Bash"
+      },
+      "Windows PowerShell": {
+        "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+      },
+      "Ubuntu (WSL)": {
+        "path": "C:\\WINDOWS\\System32\\wsl.exe",
+        "args": [
+          "-d",
+          "Ubuntu"
+        ]
+      },
+      "kali-linux (WSL)": {
+        "path": "C:\\WINDOWS\\System32\\wsl.exe",
+        "args": [
+          "-d",
+          "kali-linux"
+        ]
+      }
+    },
+    "editor.matchBrackets": "never",
+    "workbench.startupEditor": "none",
+    "editor.autoClosingBrackets": "always",
+    "editor.autoClosingComments": "always",
+    "editor.autoClosingQuotes": "always",
+    "editor.cursorBlinking": "solid",
+    "editor.language.colorizedBracketPairs": [["[","]"],["{","}"],["(",")"]],
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.tokenColorCustomizations": {
+        "comments": "#99d6fa",
+        "textMateRules": [
+            {
+                "scope":[
+                    "keyword.operator.and.cpp",
+                ],
+                "settings": {
+                    "foreground": "#97a0a79b",
+                }
+            },
+            {
+                "scope":[
+                    "keyword.operator.or.cpp",
+                ],
+                "settings": {
+                    "foreground": "#97a0a79b",
+                }
+            },
+            {
+                "scope":[
+                    "keyword.operator.xor.cpp",
+                ],
+                "settings": {
+                    "foreground": "#97a0a79b",
+                }
+            },
+            {
+                "scope":[
+                    "keyword.operator.assignment.cpp",
+                ],
+                "settings": {
+                    "foreground": "#4EC9B0",
+                }
+            },
+            {
+                "scope":[
+                    "keyword.operator.logical.cpp",
+                ],
+                "settings": {
+                    "foreground": "#cc9864",
+                }
+            },
+            {
+                "scope":[
+                    "keyword.operator.assignment.compound.cpp",
+                ],
+                "settings": {
+                    "foreground": "#4EC9B0",
+                }
+            },
+            {
+                "scope":[
+                    "keyword.operator.assignment.compound.bitwise.cpp",
+                ],
+                "settings": {
+                    "foreground": "#4EC9B0",
+                }
+            },
+            {
+                "scope":[
+                    "keyword.operator.arithmetic.cpp",
+                ],
+                "settings": {
+                    "foreground": "#92fff4",
+                }
+            },
+            {
+                "scope":[
+                    "punctuation.terminator.statement.cpp",
+                ],
+                "settings": {
+                    "foreground": "#ffffff",
+                }
+            },
+            {
+                "scope":[
+                    "keyword.operator.comparison.cpp",
+                ],
+                "settings": {
+                    "foreground": "#b089f7",
+                }
+            }
+        ]
+    },
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.minimap.enabled": false,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.useTabStops": false,
+  "workbench.editor.showTabs": "single",
+  "explorer.confirmDelete": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.smoothScrolling": true,
+  "explorer.confirmDragAndDrop": false,
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "terminal.integrated.fontFamily": "Hack Nerd Font Mono",
+  "files.exclude": {
+    "": true,
+    "**/.DS_Store": false,
+    "**/.git": false,
+    "**/.hg": false,
+    "**/.svn": false
+  },
+  "makefile.configureOnOpen": false,
+  "java.completion.importOrder": [
+    "java",
+    "javax",
+    "org",
+    "com"
+  ],
+  "java.completion.favoriteStaticMembers": [
+    "org.junit.Assert.*",
+    "org.junit.Assume.*",
+    "org.junit.jupiter.api.Assertions.*",
+    "org.junit.jupiter.api.Assumptions.*",
+    "org.junit.jupiter.api.DynamicContainer.*",
+    "org.junit.jupiter.api.DynamicTest.*",
+    "org.mockito.Mockito.*",
+    "org.mockito.ArgumentMatchers.*",
+    "org.mockito.Answers.*"
+  ],
+  "workbench.colorCustomizations": {
+    "terminal.background": "#00000000"
+  },
+  "workbench.settings.applyToAllProfiles": [
+    "workbench.colorCustomizations"
+  ],
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "window.titleBarStyle": "custom",
+  "maven.excludedFolders": [
+
+    "**/.*",
+    "**/node_modules",
+    "**/target",
+    "**/bin",
+    "**/archetype-resources"
+  ],
+  "github.copilot.editor.enableAutoCompletions": false,
+  "editor.lineNumbers": "relative",
+  "editor.fontWeight": "normal",
+  "editor.fontFamily": "Consolas,'Droid Sans Mono', 'monospace', monospace",
+"editor.fontLigatures": true,
+"window.zoomLevel": 0.25,
+"better-comments.tags": [
+
+  {
+    "tag": "!",
+    "color": "#FF2D00",
+    "strikethrough": false,
+    "underline": false,
+    "backgroundColor": "transparent",
+    "bold": false,
+    "italic": false
+  },
+  {
+    "tag": "?",
+    "color": "#3498DB",
+    "strikethrough": false,
+    "underline": false,
+    "backgroundColor": "transparent",
+    "bold": false,
+    "italic": false
+  },
+  {
+    "tag": "//",
+    "color": "#640BFF",
+    "strikethrough": true,
+    "underline": false,
+    "backgroundColor": "transparent",
+    "bold": false,
+    "italic": false
+  },
+  {
+    "tag": "todo",
+    "color": "#FF8C00",
+    "strikethrough": false,
+    "underline": false,
+    "backgroundColor": "transparent",
+    "bold": false,
+    "italic": false
+  },
+  {
+    "tag": "*",
+    "color": "#98C379",
+    "strikethrough": false,
+    "underline": false,
+    "backgroundColor": "transparent",
+    "bold": false,
+    "italic": false
+  }
+],
+"vscode_custom_css.imports": [
+  "file:///c:/Users/erick/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
+],
+"remote.autoForwardPortsSource": "hybrid",
+}
