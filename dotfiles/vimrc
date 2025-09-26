@@ -1,0 +1,91 @@
+"  _    ________  _______  ______   __________  _   __________________
+" | |  / /  _/  |/  / __ \/ ____/  / ____/ __ \/ | / / ____/  _/ ____/
+" | | / // // /|_/ / /_/ / /      / /   / / / /  |/ / /_   / // / __  
+" | |/ // // /  / / _, _/ /___   / /___/ /_/ / /|  / __/ _/ // /_/ /  
+" |___/___/_/  /_/_/ |_|\____/   \____/\____/_/ |_/_/   /___/\____/   
+
+
+" set history and info
+set viminfofile=~/.cache/vim/viminfo
+set history=200
+
+
+" set ruler to see line and file information
+set noruler
+
+
+" show line numbers with relative numbers
+set number relativenumber
+
+
+" uses spaces instead of tabs and indent to 2 spaces
+set expandtab tabstop=2 shiftwidth=2
+
+
+set autoindent " make autoindentation relative to scope of the brackets
+set mouse= " deactivate mouse
+set nocompatible " deactivate compatibility with VI
+set path+=** " appends recursive search to the path
+set wildmenu " activate basic autocomplition
+
+
+filetype plugin on
+syntax enable " activate sintax highligthing
+colorscheme sorbet " alternative colorschemes are (sorbet,slate,wildcharm,zaibatsu)
+
+
+" set <leader> key
+let mapleader = " "
+
+
+" set scrolloff to keep no lines above or below the cursor
+set scrolloff=0
+
+
+" reset horizontal and vertical split
+set splitbelow splitright
+
+
+" buffer normal-mode maps
+nnoremap <Leader>bn :enew<Enter>
+nnoremap <Leader>bd :bdelete<Enter>
+nnoremap <Leader>ba :b #<Enter>
+nnoremap <S-Tab> :bprevious<Enter>
+nnoremap <Tab> :bnext<Enter>
+
+
+" tab normal-mode maps
+nnoremap <Leader>tn :tabnew<Enter>
+nnoremap <Leader>th :tabprevious<Enter>
+nnoremap <Leader>tl :tabnext<Enter>
+nnoremap <Leader>td :tabclose<Enter>
+
+
+" set the <++> string to edit content of containers
+nnoremap <Leader>f /<++><Enter>ca<
+inoremap <C-f> <Esc>/<++><Enter>ca<
+vnoremap <Leader>f <Esc>/<++><Enter>ca<
+
+
+" map shortcuts for navigating split windows
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+
+" shortcuts for .md files
+autocmd FileType markdown inoremap ;` ``<++><Esc>F`i
+autocmd FileType markdown inoremap ;3` ```<Enter>```<Enter><Enter><++><Esc>3kA
+autocmd FileType markdown inoremap ;* **<++><Esc>F*i
+autocmd FileType markdown inoremap ;_ __<++><Esc>F_i
+autocmd FileType markdown inoremap ;~ ~~~~<++><Esc>F~;i
+
+
+" map copy to + register
+vnoremap <C-c> "+y
+
+
+" set default format of bottom status bar
+set laststatus=2
+set statusline=%f\ %m%=%r\ %y\ [%{&fileencoding?&fileencoding:&encoding}]\ 

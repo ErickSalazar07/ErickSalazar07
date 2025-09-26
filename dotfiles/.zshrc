@@ -1,4 +1,3 @@
-
 #  _____  _____ __  ______  ______   __________  _   __________________
 # /__  / / ___// / / / __ \/ ____/  / ____/ __ \/ | / / ____/  _/ ____/
 #   / /  \__ \/ /_/ / /_/ / /      / /   / / / /  |/ / /_   / // / __  
@@ -6,100 +5,113 @@
 # /____/____/_/ /_/_/ |_|\____/   \____/\____/_/ |_/_/   /___/\____/   
                                                                      
 
+# source aliases
+source $ZDOTDIR/aliases.zsh
 
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-#                                         export SECTION
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-
-export ZSH="$HOME/.oh-my-zsh" # path to your Oh My Zsh installation.
-export PATH="$HOME/.local/bin:$HOME/.local/bin/kotlinc/bin:$PATH" # load personal paths
-export MANROFFOPT='-c'
-export MANPAGER="sh -c 'col -bx | bat -l man -p --paging=always'" # set default man pager to 'bat'
-export EDITOR='vim'
+# history commands
+HISTFILE="$XDG_CACHE_HOME/zsh/history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+setopt share_history
 
 
+# style and formatting for git
+zstyle ':vcs_info:git:*' formats ' -%F{208} ( %b)%f%k'
+zstyle ':vcs_info:*' enable git
+autoload -Uz vcs_info
+setopt prompt_subst
 
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-#                                         source SECTION
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
 
-source $ZSH/oh-my-zsh.sh
+# basic auto/tab completion
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots) # include hidden files
+
+
+# vim mode for keybindings
+bindkey -v
+export KEYTIMEOUT=1
+
+# vim keys in tab completion menu
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+
+# key bindings in vim-insert-mode for going up and down in line history 
+bindkey -v '^p' up-line-or-history
+bindkey -v '^n' down-line-or-history
+
+
+# insert mode by default
+MODE="ins"
+MODE_COLOR='%F{159}' # bright blue for insert mode
+
+
+# change cursor shape for differente vim modes
+function zle-keymap-select() {
+  if [[ ${KEYMAP} == vicmd ]]; then
+    MODE="norm"
+    MODE_COLOR='%F{245}' # purple for normal mode
+  else
+    MODE="ins"
+    MODE_COLOR='%F{159}' # bright blue for insert mode
+  fi
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+
+# runs in insert mode
+zle-line-init() {
+  zle -K viins
+  MODE="ins"
+  MODE_COLOR='%F{159}'
+  echo -ne '\e[2 q'
+  zle reset-prompt
+}
+zle -N zle-line-init
+
+
+# builds dynamic prompt
+precmd() { vcs_info }
+
+PROMPT='%F{green}%n%f@%F{blue}%m%f(${MODE_COLOR}${MODE}%f)${vcs_info_msg_0_}%F{white}$ %f'
+
+# edit line in vim with ctrl-e
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+
+# set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
 
-
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-#                                         zstyle SECTION
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-
-zstyle ':vcs_info:git:*' formats '%F{208} ( %b)%f%k'
-zstyle ':vcs_info:*' enable git
-zstyle ':omz:update' mode disabled  # disable automatic updates
+# deactivate bell and confirmation for rm command
+setopt NO_BEEP 
+setopt rmstarsilent
 
 
-
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-#                                         setopt SECTION
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-
-setopt NO_BEEP # deactivate bell or beep 
-setopt rmstarsilent # deactivate confirmation for rm command
+# case sensitive completion
+CASE_SENSITIVE="true"
 
 
-
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-#                                         autoload SECTION
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-
-autoload -Uz vcs_info # custom simple prompt with git
+# loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-#                                         functions SECTION
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-
-precmd() {
-  vcs_info
+# function for opening various types of files or directories
+function open() {
+  files=("$@") # array of files
+  for file in "${files[@]}"; do
+    xdg-open "$file"
+  done
 }
 
-
-
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-#                                         variables SECTION
-#---------------------------------------------------------------------------------------------------- 
-#---------------------------------------------------------------------------------------------------- 
-
-PROMPT='%F{green}%n%f@%F{blue}%m%f${vcs_info_msg_0_}%F{white}$ %f'
-ZSH_THEME="" # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-CASE_SENSITIVE="true" # set to "true" to use case-sensitive completion.
-
-
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
