@@ -33,14 +33,6 @@ return {
           builtin.find_files()
           return
         end
-
-        if argc == 1 then
-          local arg = vim.fn.argv(0)
-          if vim.fn.isdirectory(arg) == 1 then
-            vim.cmd.cd(arg)
-            builtin.find_files()
-          end
-        end
       end,
     })
   end,
