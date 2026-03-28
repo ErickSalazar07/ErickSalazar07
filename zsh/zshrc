@@ -1,0 +1,198 @@
+#  _____  _____ __  ______  ______   __________  _   __________________
+# /__  / / ___// / / / __ \/ ____/  / ____/ __ \/ | / / ____/  _/ ____/
+#   / /  \__ \/ /_/ / /_/ / /      / /   / / / /  |/ / /_   / // / __
+#  / /_____/ / __  / _, _/ /___   / /___/ /_/ / /|  / __/ _/ // /_/ /
+# /____/____/_/ /_/_/ |_|\____/   \____/\____/_/ |_/_/   /___/\____/
+
+
+
+# history commands
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt append_history
+setopt share_history
+
+
+# style and formatting for git
+zstyle ':vcs_info:git:*' formats ' -%F{141} ( %b)%f'
+zstyle ':vcs_info:*' enable git
+autoload -Uz vcs_info
+setopt prompt_subst
+
+
+# basic auto/tab completion
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots) # include hidden files
+
+
+# vim mode for keybindings
+bindkey -v
+export KEYTIMEOUT=1
+
+
+# vim keys in tab completion menu
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+
+# key bindings in vim-insert-mode for going up and down in line history
+bindkey -v '^p' up-line-or-history
+bindkey -v '^n' down-line-or-history
+
+
+# insert mode by default
+MODE="ins"
+MODE_COLOR='%F{159}' # bright blue for insert mode
+
+
+# change cursor shape for differente vim modes
+function zle-keymap-select() {
+  if [[ ${KEYMAP} == vicmd ]]; then
+    MODE="norm"
+    MODE_COLOR='%F{245}' # purple for normal mode
+  else
+    MODE="ins"
+    MODE_COLOR='%F{159}' # bright blue for insert mode
+  fi
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+
+# runs in insert mode
+zle-line-init() {
+  zle -K viins
+  MODE="ins"
+  MODE_COLOR='%F{159}'
+  echo -ne '\e[2 q'
+  zle reset-prompt
+}
+zle -N zle-line-init
+
+
+# builds dynamic prompt
+precmd() { vcs_info }
+
+PROMPT='%F{75}%n%f@%F{208}ubuntu%f(${MODE_COLOR}${MODE}%f)${vcs_info_msg_0_}%F{white}$ %f'
+
+
+# edit line in vim with ctrl-e
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+
+# set up fzf key bindings and fuzzy completion
+source /usr/share/doc/fzf/examples/completion.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+
+# style for fzf
+export FZF_DEFAULT_OPTS='--layout=reverse --border=bold --border=rounded --margin=3% --color=dark'
+
+
+
+fzf_files_from_home() {
+  find "$HOME" \
+    \( -name .git -o -name node_modules -o -name .cache -o -name snap -o -name .local -o -name .gnupg -o -name .ssh \) -prune -o \
+    -type f -print 2>/dev/null |
+  fzf \
+    --multi \
+    --height=100% \
+    --preview '
+      if [ -d {} ]; then
+        ls -lah {}
+      elif file --mime {} | grep -q text; then
+        batcat --style=numbers --color=always --line-range :500 {}
+      else
+        file {}
+      fi
+    ' \
+    --preview-window=right:60%:wrap
+}
+
+fzf_files_home_widget() {
+  local file
+  file=$(fzf_files_from_home) || return
+  LBUFFER+="$file"
+}
+
+zle -N fzf_files_home_widget
+
+# Ctrl+I -> home (ojo: esto normalmente pisa TAB)
+bindkey '^F' fzf_files_home_widget
+
+# ctrl + K for directorys
+fzf_dirs_from_home() {
+  find "$HOME" \
+    \( -name .git -o -name node_modules -o -name .cache -o -name snap -o -name .local -o -name .gnupg -o -name .ssh \) -prune -o \
+    -type d -print 2>/dev/null |
+  fzf \
+    --height=100% \
+    --preview 'ls -lah {}' \
+    --preview-window=right:60%
+}
+
+fzf_dirs_widget() {
+  local dir
+  dir=$(fzf_dirs_from_home) || return
+  LBUFFER+="$dir"
+}
+
+zle -N fzf_dirs_widget
+
+bindkey '^K' fzf_dirs_widget
+
+
+# deactivate bell and confirmation for rm command
+setopt NO_BEEP
+setopt rmstarsilent
+
+
+# case sensitive completion
+CASE_SENSITIVE="true"
+
+
+# loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# function for opening various types of files or directories
+function open() {
+  files=("$@") # array of files
+  for file in "${files[@]}"; do
+    xdg-open "$file"
+  done
+}
+
+
+# enable color support (zsh)
+if [[ -x /usr/bin/dircolors ]]; then
+  if [[ -r ~/.dircolors ]]; then
+    eval "$(dircolors -b ~/.dircolors)"
+  else
+    eval "$(dircolors -b)"
+  fi
+fi
+
+#
+# colored output
+alias ls='ls --color=always -p'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+
+# handy ls aliases
+alias ll='ls -AlF'
+alias l='ls -CF'
+
+

@@ -1,26 +1,21 @@
 "  _    ________  _______  ______   __________  _   __________________
 " | |  / /  _/  |/  / __ \/ ____/  / ____/ __ \/ | / / ____/  _/ ____/
-" | | / // // /|_/ / /_/ / /      / /   / / / /  |/ / /_   / // / __  
-" | |/ // // /  / / _, _/ /___   / /___/ /_/ / /|  / __/ _/ // /_/ /  
-" |___/___/_/  /_/_/ |_|\____/   \____/\____/_/ |_/_/   /___/\____/   
-
+" | | / // // /|_/ / /_/ / /      / /   / / / /  |/ / /_   / // / __
+" | |/ // // /  / / _, _/ /___   / /___/ /_/ / /|  / __/ _/ // /_/ /
+" |___/___/_/  /_/_/ |_|\____/   \____/\____/_/ |_/_/   /___/\____/
 
 " set history and info
-set viminfofile=~/.cache/vim/viminfo
 set history=200
-
 
 " set ruler to see line and file information
 set noruler
 
-
 " show line numbers with relative numbers
-set number relativenumber
-
+set number
+set relativenumber
 
 " uses spaces instead of tabs and indent to 2 spaces
 set expandtab tabstop=2 shiftwidth=2
-
 
 set autoindent " make autoindentation relative to scope of the brackets
 set mouse= " deactivate mouse
@@ -28,44 +23,33 @@ set nocompatible " deactivate compatibility with VI
 set path+=** " appends recursive search to the path
 set wildmenu " activate basic autocomplition
 
-
 filetype plugin on
 syntax enable " activate sintax highligthing
-colorscheme sorbet " alternative colorschemes are (sorbet,slate,wildcharm,zaibatsu)
-
+colorscheme slate
 
 " set <leader> key
 let mapleader = " "
 
-
 " set scrolloff to keep no lines above or below the cursor
 set scrolloff=0
-
 
 " reset horizontal and vertical split
 set splitbelow splitright
 
-
 " buffer normal-mode maps
-nnoremap <Leader>bn :enew<Enter>
-nnoremap <Leader>bd :bdelete<Enter>
-nnoremap <Leader>ba :b #<Enter>
-nnoremap <S-Tab> :bprevious<Enter>
-nnoremap <Tab> :bnext<Enter>
-
-
-" tab normal-mode maps
-nnoremap <Leader>tn :tabnew<Enter>
-nnoremap <Leader>th :tabprevious<Enter>
-nnoremap <Leader>tl :tabnext<Enter>
-nnoremap <Leader>td :tabclose<Enter>
-
+nnoremap <Leader>n :enew<CR>
+nnoremap <Leader>d :bdelete<CR>
+nnoremap <Leader>D :bdelete!<CR>
+nnoremap <Leader>p :b #<CR>
+nnoremap <Leader>q :wqa<CR>
+nnoremap <Leader>b :vnew<CR>
+nnoremap <S-Tab> :bprevious<CR>
+nnoremap <Tab> :bnext<CR>
 
 " set the <++> string to edit content of containers
-nnoremap <Leader>f /<++><Enter>ca<
-inoremap <C-f> <Esc>/<++><Enter>ca<
-vnoremap <Leader>f <Esc>/<++><Enter>ca<
-
+nnoremap <Leader>f /<++><CR>ca<
+inoremap <C-f> <Esc>/<++><CR>ca<
+vnoremap <Leader>f <Esc>/<++><CR>ca<
 
 " map shortcuts for navigating split windows
 map <C-h> <C-w>h
@@ -73,19 +57,29 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-
 " shortcuts for .md files
 autocmd FileType markdown inoremap ;` ``<++><Esc>F`i
-autocmd FileType markdown inoremap ;3` ```<Enter>```<Enter><Enter><++><Esc>3kA
+autocmd FileType markdown inoremap ;3` ```<CR>```<CR><CR><++><Esc>3kA
 autocmd FileType markdown inoremap ;* **<++><Esc>F*i
 autocmd FileType markdown inoremap ;_ __<++><Esc>F_i
 autocmd FileType markdown inoremap ;~ ~~~~<++><Esc>F~;i
-
+autocmd FileType markdown nnoremap <Leader>c :w<CR>:!firefox %<CR>
 
 " map copy to + register
 vnoremap <C-c> "+y
 
-
 " set default format of bottom status bar
 set laststatus=2
-set statusline=%f\ %m%=%r\ %y\ [%{&fileencoding?&fileencoding:&encoding}]\ 
+set statusline=%f\ %m%=%r\ %y\ [%{&fileencoding?&fileencoding:&encoding}]\
+
+" good indenting for <C-v>gq command,
+set textwidth=150
+
+" set searching
+set hlsearch
+set incsearch
+
+" shortcuts for .tex files
+autocmd FileType tex nnoremap <Leader>c :w<CR>:!mklatex %<CR>
+autocmd FileType tex inoremap ;; ``''<++><Esc>F'hi
+
