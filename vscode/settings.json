@@ -1,0 +1,225 @@
+{
+  "workbench.sideBar.location": "right",
+  "editor.overviewRulerBorder": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.guides.indentation": false,
+
+  "indenticator.width": 0.01,
+  "indenticator.color.dark": "rgba(250,250,250,0.200)",
+
+  "security.workspace.trust.untrustedFiles": "open",
+  "C_Cpp.codeAnalysis.clangTidy.codeAction.showClear": "AllOnly",
+
+  "editor.fontSize": 20,
+  "editor.fontFamily": "0xProto Nerd Font Mono",
+  "editor.fontWeight": "600",
+  "editor.fontLigatures": true,
+
+  "terminal.integrated.fontFamily": "Hack Nerd Font Mono",
+  "terminal.integrated.fontWeight": "normal",
+  "terminal.integrated.fontSize": 15,
+
+  "debug.console.fontSize": 15,
+  "scm.inputFontSize": 16,
+
+  "editor.matchBrackets": false,
+  "workbench.startupEditor": "none",
+
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingComments": "always",
+  "editor.autoClosingQuotes": "always",
+  "editor.cursorBlinking": "solid",
+
+  "editor.language.colorizedBracketPairs": [
+    ["[", "]"],
+    ["{", "}"],
+    ["(", ")"]
+  ],
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+
+  "editor.tokenColorCustomizations": {
+    "comments": "#99d6fa",
+    "textMateRules": [
+      {
+        "scope": ["keyword.operator.and.cpp"],
+        "settings": {
+          "foreground": "#97a0a79b"
+        }
+      },
+      {
+        "scope": ["keyword.operator.or.cpp"],
+        "settings": {
+          "foreground": "#97a0a79b"
+        }
+      },
+      {
+        "scope": ["keyword.operator.xor.cpp"],
+        "settings": {
+          "foreground": "#97a0a79b"
+        }
+      },
+      {
+        "scope": ["keyword.operator.assignment.cpp"],
+        "settings": {
+          "foreground": "#4EC9B0"
+        }
+      },
+      {
+        "scope": ["keyword.operator.logical.cpp"],
+        "settings": {
+          "foreground": "#cc9864"
+        }
+      },
+      {
+        "scope": ["keyword.operator.assignment.compound.cpp"],
+        "settings": {
+          "foreground": "#4EC9B0"
+        }
+      },
+      {
+        "scope": ["keyword.operator.assignment.compound.bitwise.cpp"],
+        "settings": {
+          "foreground": "#4EC9B0"
+        }
+      },
+      {
+        "scope": ["keyword.operator.arithmetic.cpp"],
+        "settings": {
+          "foreground": "#92fff4"
+        }
+      },
+      {
+        "scope": ["punctuation.terminator.statement.cpp"],
+        "settings": {
+          "foreground": "#ffffff"
+        }
+      },
+      {
+        "scope": ["keyword.operator.comparison.cpp"],
+        "settings": {
+          "foreground": "#b089f7"
+        }
+      }
+    ]
+  },
+
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.useTabStops": false,
+
+  "workbench.editor.showTabs": "single",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Catppuccin Mocha",
+
+  "editor.smoothScrolling": true,
+  "diffEditor.hideUnchangedRegions.enabled": true,
+
+  "files.exclude": {
+    "**/.DS_Store": true
+  },
+
+  "makefile.configureOnOpen": false,
+
+  "java.completion.importOrder": [
+    "java",
+    "javax",
+    "org",
+    "com"
+  ],
+  "java.completion.favoriteStaticMembers": [
+    "org.junit.Assert.*",
+    "org.junit.Assume.*",
+    "org.junit.jupiter.api.Assertions.*",
+    "org.junit.jupiter.api.Assumptions.*",
+    "org.junit.jupiter.api.DynamicContainer.*",
+    "org.junit.jupiter.api.DynamicTest.*",
+    "org.mockito.Mockito.*",
+    "org.mockito.ArgumentMatchers.*",
+    "org.mockito.Answers.*"
+  ],
+
+  "workbench.colorCustomizations": {
+    "terminal.background": "#00000000"
+  },
+
+  "workbench.settings.applyToAllProfiles": [
+    "workbench.colorCustomizations"
+  ],
+
+  "window.titleBarStyle": "custom",
+  "window.zoomLevel": 0.25,
+
+  "maven.excludedFolders": [
+    "**/.*",
+    "**/node_modules",
+    "**/target",
+    "**/bin",
+    "**/archetype-resources"
+  ],
+
+  "editor.lineNumbers": "relative",
+
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      "color": "#640BFF",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
+  ],
+
+  "remote.autoForwardPortsSource": "hybrid",
+
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  }
+}
