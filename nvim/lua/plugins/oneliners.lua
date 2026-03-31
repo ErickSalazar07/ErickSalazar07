@@ -3,6 +3,7 @@ return {
     "ojroques/vim-oscyank"
   },
   {
-    "tpope/vim-fugitive"
+    "mbbill/undotree"
   }
+
 }
