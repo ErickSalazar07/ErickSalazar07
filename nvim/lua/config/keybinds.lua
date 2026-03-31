@@ -1,28 +1,31 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>d", "<cmd>bdelete<CR>", { desc = "close window" })
-vim.keymap.set("n", "<leader>D", "<cmd>bdelete!<CR>", { desc = "force close window" })
-vim.keymap.set("n", "<leader>q", "<cmd>wqa<CR>", { desc = "save and quit all" })
-vim.keymap.set("n", "<leader>n", "<cmd>enew<CR>", { desc = "new buffer" })
-vim.keymap.set("n", "<leader>p", "<cmd>b #<CR>", { desc = "last buffer" })
-vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "previous buffer" })
-vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "next buffer" })
+-- buffer managment
+vim.keymap.set("n", "<leader>d", "<cmd>bdelete<CR>", { desc = "Close window" })
+vim.keymap.set("n", "<leader>D", "<cmd>bdelete!<CR>", { desc = "Force close window" })
+vim.keymap.set("n", "<leader>q", "<cmd>wqa<CR>", { desc = "Save and quit all" })
+vim.keymap.set("n", "<leader>n", "<cmd>enew<CR>", { desc = "New buffer" })
+vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 
--- pane navigation
+-- file movement managment
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center view when going half page down" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center view when going half page up" })
+vim.keymap.set("n", "n", "nzz", { desc = "Center view when searching patterns" })
+vim.keymap.set("n", "N", "Nzz", { desc = "Center view when searching backward patterns" })
+
+-- pane managment
+vim.keymap.set("n", "<leader>w", "<C-w>", { desc = "Alias for managing windows" })
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to lower split" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to upper split" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
 
--- Git command with fugitive plugin managment keybindings
-vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>", { desc = "Enters Git(fugitive) command for status" })
-vim.keymap.set("n", "<leader>gc", "<cmd>Git commit<CR>", { desc = "Enters Git(fugitive) command for commiting" })
-vim.keymap.set("n", "<leader>ga", "<cmd>Git add -p<CR>", { desc = "Enters Git(fugitive) command for adding in patch mode" })
-vim.keymap.set("n", "<leader>gd", "<cmd>Git diff --staged<CR>", { desc = "Enters Git(fugitive) command for diff in the index/stage" })
-vim.keymap.set("n", "<leader>gl", "<cmd>Git log<CR>", { desc = "Enters Git(fugitive) command for checking logs" })
-
--- ctrl + c system clipboard
-vim.keymap.set("v", "<C-c>", '"+y', { desc = "Copy to system clipboard" })
+-- copying & pasting managment
+vim.keymap.set("n", "<leader>y", "\"+y", { desc = "Copy to system clipboard normal mode" })
+vim.keymap.set("v", "<leader>y", "\"+y", { desc = "Copy to system clipboard visual mode" })
+vim.keymap.set("n", "Y", "yg$", { desc = "Copy logical line" })
+vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "Paste without override the clipboard" })
 
 -- dynamic gq command
 local function dynamic_gq()
@@ -32,6 +35,9 @@ local function dynamic_gq()
   return "gq"
 end
 
+-- code edition managment
+vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Moves code in visual mode to 1 line upper" })
+vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Moves code in visual mode to 1 line down" })
 vim.keymap.set({ "n", "x" }, "gq", dynamic_gq, {
   expr = true,
   desc = "Dynamic gq based on window width",
