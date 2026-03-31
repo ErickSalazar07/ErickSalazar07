@@ -3,128 +3,152 @@
   "editor.overviewRulerBorder": false,
   "editor.hideCursorInOverviewRuler": true,
   "editor.guides.indentation": false,
-
+  "terminal.integrated.profiles.linux": {
+    "tmux-dropdown": {
+      "path": "zsh",
+      "args": [
+        "-i",
+        "-c",
+        "tmux new-session -A -s vscode"
+      ]
+    }
+  },
+  "terminal.integrated.defaultProfile.linux": "tmux-dropdown",
   "indenticator.width": 0.01,
   "indenticator.color.dark": "rgba(250,250,250,0.200)",
-
   "security.workspace.trust.untrustedFiles": "open",
   "C_Cpp.codeAnalysis.clangTidy.codeAction.showClear": "AllOnly",
-
-  "editor.fontSize": 20,
+  "editor.fontSize": 19,
   "editor.fontFamily": "0xProto Nerd Font Mono",
-  "editor.fontWeight": "600",
+  "editor.fontWeight": "550",
   "editor.fontLigatures": true,
-
   "terminal.integrated.fontFamily": "Hack Nerd Font Mono",
   "terminal.integrated.fontWeight": "normal",
   "terminal.integrated.fontSize": 15,
-
   "debug.console.fontSize": 15,
   "scm.inputFontSize": 16,
-
-  "editor.matchBrackets": false,
+  "editor.matchBrackets": "never",
   "workbench.startupEditor": "none",
-
   "editor.autoClosingBrackets": "always",
   "editor.autoClosingComments": "always",
   "editor.autoClosingQuotes": "always",
   "editor.cursorBlinking": "solid",
-
   "editor.language.colorizedBracketPairs": [
-    ["[", "]"],
-    ["{", "}"],
-    ["(", ")"]
+    [
+      "[",
+      "]"
+    ],
+    [
+      "{",
+      "}"
+    ],
+    [
+      "(",
+      ")"
+    ]
   ],
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-
   "editor.tokenColorCustomizations": {
     "comments": "#99d6fa",
     "textMateRules": [
       {
-        "scope": ["keyword.operator.and.cpp"],
+        "scope": [
+          "keyword.operator.and.cpp"
+        ],
         "settings": {
           "foreground": "#97a0a79b"
         }
       },
       {
-        "scope": ["keyword.operator.or.cpp"],
+        "scope": [
+          "keyword.operator.or.cpp"
+        ],
         "settings": {
           "foreground": "#97a0a79b"
         }
       },
       {
-        "scope": ["keyword.operator.xor.cpp"],
+        "scope": [
+          "keyword.operator.xor.cpp"
+        ],
         "settings": {
           "foreground": "#97a0a79b"
         }
       },
       {
-        "scope": ["keyword.operator.assignment.cpp"],
+        "scope": [
+          "keyword.operator.assignment.cpp"
+        ],
         "settings": {
           "foreground": "#4EC9B0"
         }
       },
       {
-        "scope": ["keyword.operator.logical.cpp"],
+        "scope": [
+          "keyword.operator.logical.cpp"
+        ],
         "settings": {
           "foreground": "#cc9864"
         }
       },
       {
-        "scope": ["keyword.operator.assignment.compound.cpp"],
+        "scope": [
+          "keyword.operator.assignment.compound.cpp"
+        ],
         "settings": {
           "foreground": "#4EC9B0"
         }
       },
       {
-        "scope": ["keyword.operator.assignment.compound.bitwise.cpp"],
+        "scope": [
+          "keyword.operator.assignment.compound.bitwise.cpp"
+        ],
         "settings": {
           "foreground": "#4EC9B0"
         }
       },
       {
-        "scope": ["keyword.operator.arithmetic.cpp"],
+        "scope": [
+          "keyword.operator.arithmetic.cpp"
+        ],
         "settings": {
           "foreground": "#92fff4"
         }
       },
       {
-        "scope": ["punctuation.terminator.statement.cpp"],
+        "scope": [
+          "punctuation.terminator.statement.cpp"
+        ],
         "settings": {
           "foreground": "#ffffff"
         }
       },
       {
-        "scope": ["keyword.operator.comparison.cpp"],
+        "scope": [
+          "keyword.operator.comparison.cpp"
+        ],
         "settings": {
           "foreground": "#b089f7"
         }
       }
     ]
   },
-
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "editor.useTabStops": false,
-
   "workbench.editor.showTabs": "single",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Catppuccin Mocha",
-
   "editor.smoothScrolling": true,
   "diffEditor.hideUnchangedRegions.enabled": true,
-
   "files.exclude": {
     "**/.DS_Store": true
   },
-
   "makefile.configureOnOpen": false,
-
   "java.completion.importOrder": [
     "java",
     "javax",
@@ -142,18 +166,14 @@
     "org.mockito.ArgumentMatchers.*",
     "org.mockito.Answers.*"
   ],
-
   "workbench.colorCustomizations": {
     "terminal.background": "#00000000"
   },
-
   "workbench.settings.applyToAllProfiles": [
     "workbench.colorCustomizations"
   ],
-
   "window.titleBarStyle": "custom",
   "window.zoomLevel": 0.25,
-
   "maven.excludedFolders": [
     "**/.*",
     "**/node_modules",
@@ -161,9 +181,7 @@
     "**/bin",
     "**/archetype-resources"
   ],
-
   "editor.lineNumbers": "relative",
-
   "better-comments.tags": [
     {
       "tag": "!",
@@ -211,13 +229,13 @@
       "italic": false
     }
   ],
-
   "remote.autoForwardPortsSource": "hybrid",
-
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
-    "editor.rulers": [80],
+    "editor.rulers": [
+      80
+    ],
     "editor.selectionHighlight": false,
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": "off"
