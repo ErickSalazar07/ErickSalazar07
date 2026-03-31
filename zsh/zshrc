@@ -5,7 +5,6 @@
 # /____/____/_/ /_/_/ |_|\____/   \____/\____/_/ |_/_/   /___/\____/
 
 
-
 # history commands
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
@@ -97,10 +96,19 @@ source /usr/share/doc/fzf/examples/key-bindings.zsh
 export FZF_DEFAULT_OPTS='--layout=reverse --border=bold --border=rounded --margin=3% --color=dark'
 
 
-
 fzf_files_from_home() {
   find "$HOME" \
-    \( -name .git -o -name node_modules -o -name .cache -o -name snap -o -name .local -o -name .gnupg -o -name .ssh \) -prune -o \
+    \( -name snap -o \
+      -name .vscode -o \
+      -path "$HOME/.config/Code" -o \
+      -path "$HOME/.nvim" -o \
+      -name .npm -o \
+      -name .nvm -o \
+      -name .cache -o \
+      -name node_modules -o \
+      -name .gnupg -o \
+      -name .git -o \
+      -name .ssh \) -prune -o \
     -type f -print 2>/dev/null |
   fzf \
     --multi \
@@ -131,7 +139,17 @@ bindkey '^F' fzf_files_home_widget
 # ctrl + K for directorys
 fzf_dirs_from_home() {
   find "$HOME" \
-    \( -name .git -o -name node_modules -o -name .cache -o -name snap -o -name .local -o -name .gnupg -o -name .ssh \) -prune -o \
+    \( -name snap -o \
+      -name .vscode -o \
+      -path "$HOME/.config/Code" -o \
+      -path "$HOME/.nvim" -o \
+      -name .npm -o \
+      -name .nvm -o \
+      -name .cache -o \
+      -name node_modules -o \
+      -name .gnupg -o \
+      -name .git -o \
+      -name .ssh \) -prune -o \
     -type d -print 2>/dev/null |
   fzf \
     --height=100% \
@@ -196,3 +214,5 @@ alias ll='ls -AlF'
 alias l='ls -CF'
 
 
+# alias for batcat to b
+alias b='batcat'
