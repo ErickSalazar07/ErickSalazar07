@@ -1,0 +1,113 @@
+#!/bin/env bash
+
+set -euo pipefail
+
+# @brief writes one git config section to the target file
+generate_config() {
+  local section="$1"
+  local -n config_ref="$2"
+  local path="$3"
+
+  echo "[$section]" >> "$path"
+  for key in "${!config_ref[@]}"; do
+    local value="${config_ref[$key]}"
+
+    printf "\t%s = %s\n" "$key" "$value" >> "$path"
+  done
+
+  echo "" >> "$path"
+}
+
+conf_path="$HOME/.gitconfig"
+
+# sections to render
+sections=(
+  "branch"
+
+  "core"
+  "color"
+  "commit"
+
+  "diff"
+
+  "fetch"
+
+  "help"
+
+  "init"
+
+  "pull"
+  "push"
+
+  "rebase"
+
+  "tag"
+
+  "user"
+)
+
+# ------------------------- BEGIN config dictionaries -------------------------
+# NOTE: add dictonary(associative array) configuration and add name to secctions array
+
+declare -A user=(
+  ["name"]="Erick Salazar Suarez"
+  ["email"]="ericksalazar@javeriana.edu.co"
+)
+
+declare -A core=(
+  ["editor"]="${EDITOR:-vim}"
+)
+
+declare -A init=(
+  ["defaultBranch"]="main"
+)
+
+declare -A color=(
+  ["ui"]="auto"
+)
+
+declare -A pull=(
+  ["ff"]="only"
+)
+
+declare -A push=(
+  ["autoSetupRemote"]="true"
+)
+
+declare -A fetch=(
+  ["prune"]="true"
+)
+
+declare -A diff=(
+  ["mnemonicPrefix"]="true"
+  ["colorMoved"]="default"
+)
+
+declare -A branch=(
+  ["sort"]="-committerdate"
+)
+
+declare -A tag=(
+  ["sort"]="version:refname"
+)
+
+declare -A help=(
+  ["autocorrect"]="prompt"
+)
+
+declare -A commit=(
+  ["verbose"]="true"
+)
+
+declare -A rebase=(
+  ["autostash"]="true"
+)
+
+# ------------------------- END config dictionaries -------------------------
+
+# truncate file before regenerating
+: > "$conf_path"
+
+for section in "${sections[@]}"; do
+  generate_config "$section" "$section" "$conf_path"
+done
