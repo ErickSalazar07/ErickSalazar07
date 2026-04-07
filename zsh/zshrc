@@ -5,12 +5,16 @@
 # /____/____/_/ /_/_/ |_|\____/   \____/\____/_/ |_/_/   /___/\____/
 
 
+
 # history commands
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt append_history
-setopt share_history
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
 
 
 # style and formatting for git
@@ -216,3 +220,4 @@ alias l='ls -CF'
 
 # alias for batcat to b
 alias b='batcat'
+

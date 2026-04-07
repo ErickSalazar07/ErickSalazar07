@@ -40,12 +40,13 @@ return {
     vim.api.nvim_create_autocmd("VimEnter", {
       callback = function()
         local argc = vim.fn.argc()
+        local is_scratch = vim.env.NVIM_SCRATCH == "1"
 
-          if argc == 0 then
-            vim.schedule(function()
-              builtin.find_files()
-            end)
-          end
+        if argc == 0 and not is_scratch then
+          vim.schedule(function()
+            builtin.find_files()
+          end)
+        end
       end,
     })
   end,

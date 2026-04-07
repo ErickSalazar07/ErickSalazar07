@@ -10,7 +10,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 # adds ~/.local/bin to $PATH
 [[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && export PATH="$HOME/.local/bin:$PATH"
-# IMPORTAN USE ONLY IF nvim INSTALLATION MANUAL [[ ":$PATH:" != *":/opt/nvim-linux-x86_64/bin:"* ]] && export PATH="/opt/nvim-linux-x86_64/bin:$PATH" 
+[[ ":$PATH:" != *":/opt/nvim-linux-x86_64/bin:"* ]] && export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
 
 # configures custom config files for programs
 # export VIMINIT='source $HOME/.config/vim/vimrc'
