@@ -26,7 +26,6 @@ sections=(
 
   "core"
   "color"
-  "commit"
 
   "diff"
 
@@ -93,10 +92,6 @@ declare -A tag=(
 
 declare -A help=(
   ["autocorrect"]="prompt"
-)
-
-declare -A commit=(
-  ["verbose"]="true"
 )
 
 declare -A rebase=(
