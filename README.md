@@ -63,7 +63,6 @@ pentesting** from a hands-on perspective.
 
 - Unix/Linux environments
 - C / C++ development
-- Backend architecture
 - Terminal-based workflows
 - Tooling and automation
 - Embedded systems with Arduino Uno and ESP8266
