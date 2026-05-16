@@ -1,0 +1,32 @@
+{
+  "exclusionRules": [
+    {
+      "passKeys": "t",
+      "pattern": "https?://github.com/*"
+    },
+    {
+      "passKeys": "f,j,k,l,<,>",
+      "pattern": "https?://www.youtube.com/watch*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://www.overleaf.com/project/**"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://agilefingers.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://typst.app/project/**"
+    }
+  ],
+  "grabBackFocus": true,
+  "ignoreKeyboardLayout": true,
+  "keyMappings": "# Insert your preferred key mappings here.\n\nmap o Vomnibar.activateInNewTab\nmap O Vomnibar.activate",
+  "linkHintCharacters": "abcdefghijklmnopqrstuvwxyz",
+  "newTabCustomUrl": "https://search.brave.com/",
+  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ng: https://www.google.com/search?q=%s Google\ny: https://www.youtube.com/results?search_query=%s Youtube\ngm: https://www.google.com/maps?q=%s Google maps\nb: https://www.bing.com/search?q=%s Bing\nd: https://duckduckgo.com/?q=%s DuckDuckGo\naz: https://www.amazon.com/s/?field-keywords=%s\nqw: https://www.qwant.com/?q=%s Qwant\ntl: https://translate.google.com/?sl=en&tl=es&op=translate&q=%s Translate",
+  "settingsVersion": "2.4.2",
+  "userDefinedLinkHintCss": "/* ========================= */\n/* #ui - Hints + HUD         */\n/* ========================= */\n\ndiv > .vimiumHintMarker {\n  background: linear-gradient(135deg, #1a1b26, #16161e);\n  border: 1px solid #3b4261;\n  border-radius: 5px;\n  padding: 3px 6px;\n\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);\n}\n\ndiv > .vimiumHintMarker span {\n  color: #bb9af7; /* morado clarito */\n  font-weight: normal;\n  font-size: 10px;\n  font-family: \"JetBrains Mono\", \"Fira Code\", monospace;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n  color: #ff9e64; /* naranja */\n}\n\n/* HUD (mensaje abajo a la derecha) */\n#hud, .vimiumHUD {\n  background: #1a1b26 !important;\n  color: #c0caf5 !important;\n  border: 1px solid #3b4261 !important;\n  border-radius: 6px !important;\n  box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;\n  font-family: \"JetBrains Mono\", monospace !important;\n}\n\n\n/* ========================= */\n/* #omni - Vomnibar          */\n/* ========================= */\n\n#vomnibar {\n  background: #1a1b26 !important;\n  border: 1px solid #3b4261 !important;\n  border-radius: 8px !important;\n  box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;\n  font-family: \"JetBrains Mono\", monospace !important;\n}\n\n#vomnibar input {\n  background: transparent !important;\n  color: #c0caf5 !important;\n  border: none !important;\n}\n\n#vomnibar ul {\n  background: transparent !important;\n}\n\n#vomnibar li {\n  color: #c0caf5 !important; /* blanco suave */\n}\n\n#vomnibar .match {\n  color: #7aa2f7 !important;\n  background: rgba(122, 162, 247, 0.15);\n  border-radius: 3px;\n  padding: 0 2px;\n}\n\n#vomnibar li.focused {\n  background: #283457 !important;\n  color: #bb9af7 !important;\n}\n\n#vomnibar .title {\n  color: #7aa2f7 !important;\n}\n\n#vomnibar .url {\n  color: #73daca !important;\n}\n\n\n/* ========================= */\n/* #find - FindBar iframe    */\n/* ========================= */\n\n#findbar {\n  background: #1a1b26 !important;\n  color: #c0caf5 !important;\n  border: 1px solid #3b4261 !important;\n  border-radius: 6px !important;\n  font-family: \"JetBrains Mono\", monospace !important;\n}\n\n#findbar input {\n  background: #16161e !important;\n  color: #c0caf5 !important;\n  border: 1px solid #3b4261 !important;\n}\n\n#findbar .match {\n  color: #bb9af7 !important;\n}\n\n\n/* ========================= */\n/* #find:host - página activa */\n/* ========================= */\n\nbody.vimiumFindMode {\n  background-color: rgba(26, 27, 38, 0.4) !important;\n}\n\n\n/* ========================= */\n/* #find:selection           */\n/* ========================= */\n\n::selection {\n  background: #7aa2f7 !important;\n  color: #1a1b26 !important;\n}\n\n::-moz-selection {\n  background: #7aa2f7 !important;\n  color: #1a1b26 !important;\n}"
+}
