@@ -38,3 +38,5 @@ vim.g.netrw_hide = 1
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+-- spelling
+vim.opt.spelllang = "es"
