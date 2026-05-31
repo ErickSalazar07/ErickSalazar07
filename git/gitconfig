@@ -1,0 +1,34 @@
+[branch]
+	sort = -committerdate
+
+[core]
+	editor = nvim
+
+[color]
+	ui = auto
+
+[diff]
+	colorMoved = default
+	mnemonicPrefix = true
+
+[fetch]
+	prune = true
+
+[help]
+	autocorrect = prompt
+
+[init]
+	defaultBranch = main
+
+[pull]
+	ff = only
+
+[push]
+	autoSetupRemote = true
+
+[rebase]
+	autostash = true
+
+[tag]
+	sort = version:refname
+
