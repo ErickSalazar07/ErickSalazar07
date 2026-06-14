@@ -6,6 +6,7 @@ eza
 fd
 fzf
 git
+gpg
 jrnl
 nvim
 pass
@@ -13,6 +14,7 @@ ripgrep
 ssh
 tmux
 typst
+vim
 wget
 xclip
 zsh
