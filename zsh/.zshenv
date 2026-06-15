@@ -7,6 +7,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_DATA_HOME="$HOME/.local/share"
 
+# python variables
+export PYTHONSTARTUP="/etc/python3/pythonrc.py"
 
 # adds ~/.local/bin to $PATH
 [[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && export PATH="$HOME/.local/bin:$PATH"
@@ -14,9 +16,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 # configures custom config files for programs
 # export VIMINIT='source $HOME/.config/vim/vimrc'
-# export TMUX_CONF="$XDG_CONFIG_HOME/tmux/tmux.conf"
-# export GIT_CONFIG="$XDG_CONFIG_HOME/git/config"
-# export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # default programs
 export VISUAL="nvim"

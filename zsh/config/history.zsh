@@ -1,0 +1,11 @@
+# history configuration
+
+HISTFILE="$XDG_CACHE_HOME/zsh/zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+

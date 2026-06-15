@@ -44,7 +44,11 @@ buildZsh() {
   mkdir -p "$zshCacheDir" "$zshConfDir" # creating directories for zsh
 
   for file in "$localZshConfDir"/*; do
-    cp "$file" "$zshConfDir/.$(basename "$file")"
+    if [ -d "$file" ]; then
+      cp -r "$file" "$zshConfDir/"
+    else
+      cp "$file" "$zshConfDir/$(basename $"file")"
+    fi
   done
 
 }
