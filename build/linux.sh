@@ -47,7 +47,7 @@ buildZsh() {
     if [ -d "$file" ]; then
       cp -r "$file" "$zshConfDir/"
     else
-      cp "$file" "$zshConfDir/$(basename $"file")"
+      cp "$file" "$zshConfDir/$(basename "$file")"
     fi
   done
 
@@ -69,7 +69,7 @@ buildTmux() {
   mkdir -p "$tmuxConfDir"
 
   for file in "$localTmuxConfDir"/*; do
-    cp "$file" "$tmuxConfDir/$(basename $"file")"
+    cp "$file" "$tmuxConfDir/$(basename "$file")"
   done
 
 }
@@ -90,7 +90,7 @@ buildGit() {
   mkdir -p "$gitConfDir"
 
   for file in "$localGitConfDir"/*; do
-    cp "$file" "$gitConfDir/$(basename $"file")"
+    cp "$file" "$gitConfDir/$(basename "$file")"
   done
 
 }
@@ -114,7 +114,7 @@ buildNvim() {
     if [ -d "$file" ]; then
       cp -r "$file" "$nvimConfDir/"
     else
-      cp "$file" "$nvimConfDir/$(basename $"file")"
+      cp "$file" "$nvimConfDir/$(basename "$file")"
     fi
   done
 
