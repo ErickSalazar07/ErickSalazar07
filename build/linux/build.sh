@@ -43,8 +43,13 @@ buildZsh() {
 
   mkdir -p "$zshCacheDir" "$zshConfDir" # creating directories for zsh
 
+  shopt -s dotglob
   for file in "$localZshConfDir"/*; do
-    cp "$file" "$zshConfDir/.$(basename "$file")"
+    if [ -d "$file" ]; then
+      cp -r "$file" "$zshConfDir/"
+    else
+      cp "$file" "$zshConfDir/$(basename "$file")"
+    fi
   done
 
 }
@@ -65,7 +70,7 @@ buildTmux() {
   mkdir -p "$tmuxConfDir"
 
   for file in "$localTmuxConfDir"/*; do
-    cp "$file" "$tmuxConfDir/$(basename $"file")"
+    cp "$file" "$tmuxConfDir/$(basename "$file")"
   done
 
 }
@@ -86,7 +91,7 @@ buildGit() {
   mkdir -p "$gitConfDir"
 
   for file in "$localGitConfDir"/*; do
-    cp "$file" "$gitConfDir/$(basename $"file")"
+    cp "$file" "$gitConfDir/$(basename "$file")"
   done
 
 }
@@ -97,6 +102,7 @@ buildNvim() {
   local pRoot="$1"
 
   local nvimConfDir="$HOME/.config/nvim" # path to config directory for nvim (neovim)
+  local nvimCacheDir="$HOME/.cache/nvim" # path to the cache directory for nvim (neovim)
   local localNvimConfDir="$pRoot/nvim" # path to local config directory for nvim (neovim)
 
   if ! command -v nvim > /dev/null; then
@@ -104,13 +110,13 @@ buildNvim() {
     exit $EXIT_FAILURE
   fi
 
-  mkdir -p "$nvimConfDir"
+  mkdir -p "$nvimCacheDir" "$nvimConfDir"
 
   for file in "$localNvimConfDir"/*; do
     if [ -d "$file" ]; then
       cp -r "$file" "$nvimConfDir/"
     else
-      cp "$file" "$nvimConfDir/$(basename $"file")"
+      cp "$file" "$nvimConfDir/$(basename "$file")"
     fi
   done
 
@@ -128,7 +134,7 @@ main() {
   fi
 
 
-  local pRoot='../' # path to the project's root
+  local pRoot="$(dirname "$(realpath "$0")")/../.." # path to the project's root
 
   buildZsh "$pRoot"
   buildTmux "$pRoot"
