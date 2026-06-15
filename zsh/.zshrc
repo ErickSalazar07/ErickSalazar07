@@ -8,9 +8,11 @@
 MODE="ins"
 MODE_COLOR='%F{159}' # bright blue for insert mode
 
+
 # deactivate bell and confirmation for rm command
 setopt NO_BEEP
 setopt rmstarsilent
+
 
 # enable color support (zsh)
 if [[ -x /usr/bin/dircolors ]]; then
@@ -21,5 +23,17 @@ if [[ -x /usr/bin/dircolors ]]; then
   fi
 fi
 
+
 # opencode
 export PATH=/home/erick/.opencode/bin:$PATH
+
+
+# source tools zsh config files
+for f in "$ZDOTDIR/tools"/*.zsh; do
+  source "$f"
+done
+
+# source various configuration zsh files
+for f in "$ZDOTDIR/config"/*.zsh; do
+  source "$f"
+done

@@ -77,5 +77,3 @@ fzf_dirs_widget() {
 zle -N fzf_dirs_widget
 
 bindkey '^K' fzf_dirs_widget
-
-
