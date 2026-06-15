@@ -132,7 +132,7 @@ main() {
   fi
 
 
-  local pRoot='../' # path to the project's root
+  local pRoot="$(dirname "$(realpath "$0")")/../" # path to the project's root
 
   buildZsh "$pRoot"
   buildTmux "$pRoot"
