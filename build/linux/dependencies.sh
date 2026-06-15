@@ -41,7 +41,7 @@ logEntry() {
 
 # ---------- distro detection ----------
 getDistro() {
-  # /etc/os-release is the reliable source — uname -a reflects the HOST kernel
+  # /etc/os-release is the reliable source - uname -a reflects the HOST kernel
   # so it can say "Ubuntu" even inside an Alpine container
   if [ -f /etc/os-release ]; then
     local id
@@ -80,17 +80,17 @@ getInstallCmd() {
 # ---------- dependencies INSTALL FUNCTION ----------
 installDependencies() {
   local pRoot="$1"
-  local csvP="$pRoot/build/programs.csv"        # path to the programs csv file
-  local logP="$pRoot/dependencies_linux.log"    # path to the log file
+  local csvP="$pRoot/build/linux/programs.csv" # path to the programs csv file
+  local logP="$pRoot/dependencies_linux.log" # path to the log file
 
   # initialize log file with header
-  printf "# ============================================================\n"   > "$logP"
-  printf "# dependencies_linux.log\n"                                         >> "$logP"
-  printf "# started: %s\n" "$(date '+%Y-%m-%d %H:%M:%S')"                    >> "$logP"
-  printf "# host:    %s\n" "$(uname -n)"                                      >> "$logP"
-  printf "# kernel:  %s\n" "$(uname -r)"                                      >> "$logP"
-  printf "# ============================================================\n"   >> "$logP"
-  printf "\n"                                                                  >> "$logP"
+  printf "# ============================================================\n" > "$logP"
+  printf "# dependencies_linux.log\n"                                       >> "$logP"
+  printf "# started: %s\n" "$(date '+%Y-%m-%d %H:%M:%S')"                   >> "$logP"
+  printf "# host:    %s\n" "$(uname -n)"                                    >> "$logP"
+  printf "# kernel:  %s\n" "$(uname -r)"                                    >> "$logP"
+  printf "# ============================================================\n" >> "$logP"
+  printf "\n"                                                               >> "$logP"
 
   if [ ! -f "$csvP" ]; then
     msgError "Can't find ${C_B}programs.csv${C_RST} at $csvP"
@@ -103,7 +103,7 @@ installDependencies() {
 
   if [ "$distro" = 'unknown' ]; then
     msgError "Unsupported distro, only ${C_Y}Ubuntu${C_RST}, ${C_Y}Arch${C_RST}, ${C_Y}Fedora${C_RST} and ${C_Y}Alpine${C_RST} are supported"
-    logEntry "ERROR" "unsupported distro — could not detect from /etc/os-release" "$logP"
+    logEntry "ERROR" "unsupported distro - could not detect from /etc/os-release" "$logP"
     exit $EXIT_FAILURE
   fi
 
@@ -140,23 +140,23 @@ installDependencies() {
 
     if [ -z "$pkgName" ]; then
       msgError "No package defined for ${C_Y}${name}${C_RST} on ${distro}, skipping"
-      logEntry "WARN" "no package defined for '$name' on $distro — skipped" "$logP"
+      logEntry "WARN" "no package defined for '$name' on $distro - skipped" "$logP"
       continue
     fi
 
     if command -v "$(echo "$name" | cut -d'/' -f1)" > /dev/null 2>&1; then
       msgOk "${name} is already installed, skipping"
-      logEntry "INFO" "$name — already installed, skipped" "$logP"
+      logEntry "INFO" "$name - already installed, skipped" "$logP"
       continue
     fi
 
     msgInfo "Installing ${C_B}${name}${C_RST} (${pkgName})..."
-    if $installCmd "$pkgName" >> "$logP" 2>&1; then
+    if $installCmd "$pkgName" > /dev/null; then
       msgOk "${name} installed successfully"
-      logEntry "INFO" "$name ($pkgName) — installed successfully" "$logP"
+      logEntry "INFO" "$name ($pkgName) - installed successfully" "$logP"
     else
       msgError "Failed to install ${name}, continuing with next package"
-      logEntry "ERROR" "$name ($pkgName) — installation failed" "$logP"
+      logEntry "ERROR" "$name ($pkgName) - installation failed" "$logP"
     fi
 
     printf "\n" >> "$logP"
