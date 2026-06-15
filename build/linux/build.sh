@@ -102,6 +102,7 @@ buildNvim() {
   local pRoot="$1"
 
   local nvimConfDir="$HOME/.config/nvim" # path to config directory for nvim (neovim)
+  local nvimCacheDir="$HOME/.cache/nvim" # path to the cache directory for nvim (neovim)
   local localNvimConfDir="$pRoot/nvim" # path to local config directory for nvim (neovim)
 
   if ! command -v nvim > /dev/null; then
@@ -109,7 +110,7 @@ buildNvim() {
     exit $EXIT_FAILURE
   fi
 
-  mkdir -p "$nvimConfDir"
+  mkdir -p "$nvimCacheDir" "$nvimConfDir"
 
   for file in "$localNvimConfDir"/*; do
     if [ -d "$file" ]; then
@@ -133,7 +134,7 @@ main() {
   fi
 
 
-  local pRoot="$(dirname "$(realpath "$0")")/../" # path to the project's root
+  local pRoot="$(dirname "$(realpath "$0")")/../.." # path to the project's root
 
   buildZsh "$pRoot"
   buildTmux "$pRoot"
