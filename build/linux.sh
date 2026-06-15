@@ -43,6 +43,7 @@ buildZsh() {
 
   mkdir -p "$zshCacheDir" "$zshConfDir" # creating directories for zsh
 
+  shopt -s dotglob
   for file in "$localZshConfDir"/*; do
     if [ -d "$file" ]; then
       cp -r "$file" "$zshConfDir/"
