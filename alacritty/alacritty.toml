@@ -1,0 +1,47 @@
+[font]
+size = 14.5
+
+[font.normal]
+family = "0xProto Nerd Font Mono"
+style = "Bold"
+
+[font.bold]
+family = "0xProto Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "0xProto Nerd Font Mono"
+style = "Italic"
+
+[font.bold_italic]
+family = "0xProto Nerd Font Mono"
+style = "Bold Italic"
+
+[colors.primary]
+background = "#0b1220"
+foreground = "#e2e8f3"
+
+[colors.normal]
+black = "#0b1220"
+red = "#ee6a6a"
+green = "#6fe3a1"
+yellow = "#f0d46a"
+blue = "#6b8cff"
+magenta = "#b38cff"
+cyan = "#6fd3f2"
+white = "#e2e8f3"
+
+[colors.bright]
+black = "#4c566a"
+red = "#ff7a7a"
+green = "#8ff0b8"
+yellow = "#ffe07a"
+blue = "#8fb0ff"
+magenta = "#d2b2ff"
+cyan = "#9ae6ff"
+white = "#ffffff"
+
+# [keyboard]
+# bindings = [
+#   { key = "F11", action = "ToggleFullscreen" }
+# ]
