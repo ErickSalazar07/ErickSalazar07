@@ -19,26 +19,3 @@ bindkey -v '^n' down-line-or-history
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# change cursor shape for differente vim modes
-function zle-keymap-select() {
-  if [[ ${KEYMAP} == vicmd ]]; then
-    MODE="norm"
-    MODE_COLOR='%F{245}' # purple for normal mode
-  else
-    MODE="ins"
-    MODE_COLOR='%F{159}' # bright blue for insert mode
-  fi
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-
-
-# runs in insert mode
-zle-line-init() {
-  zle -K viins
-  MODE="ins"
-  MODE_COLOR='%F{159}'
-  echo -ne '\e[2 q'
-  zle reset-prompt
-}
-zle -N zle-line-init
