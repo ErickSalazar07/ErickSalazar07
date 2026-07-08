@@ -4,7 +4,7 @@ zstyle ':vcs_info:*' enable git # enable Git support
 
 # git prompt format
 zstyle ':vcs_info:git:*' formats '%F{208}( %b)%f'
-zstyle ':vcs_info:git:*' actionformats '%F{208}( %b|%a)%f'
+zstyle ':vcs_info:git:*' actionformats '%F{67}( %b|%a)%f'
 
 # prompt helper status
 _prompt_status() {
