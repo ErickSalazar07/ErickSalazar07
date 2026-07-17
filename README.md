@@ -53,9 +53,7 @@ pentesting** from a hands-on perspective.
 
 ## GitHub Metrics
 
-![](https://github-readme-stats.vercel.app/api?username=ErickSalazar07&show_icons=true&hide_border=true&rank_icon=github)
-
-![](https://github-readme-activity-graph.vercel.app/graph?username=ErickSalazar07&hide_border=true)
+[![GitHub Streak](https://streak-stats.demolab.com?user=ErickSalazar07&theme=tokyonight&mode=weekly)](https://git.io/streak-stats)
 
 ---
 
