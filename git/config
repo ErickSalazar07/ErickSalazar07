@@ -32,3 +32,5 @@
 [tag]
 	sort = version:refname
 
+[alias]
+	l = log --oneline

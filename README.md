@@ -53,7 +53,17 @@ pentesting** from a hands-on perspective.
 
 ## GitHub Metrics
 
-[![GitHub Streak](https://streak-stats.demolab.com?user=ErickSalazar07&theme=tokyonight&mode=weekly)](https://git.io/streak-stats)
+<p>
+  <img
+    src="https://github-stats-extended.vercel.app/api/?username=ErickSalazar07&show_icons=true&theme=nord&rank_icon=github&include_all_commits=true&custom_title=Erick's+Stats&number_format=long&show=prs_merged_percentage,prs_reviewed"
+    alt="GitHub Stats"
+  />
+  &ensp;&ensp;&ensp;&ensp; <!-- space between metrics -->
+  <img
+    src="https://github-stats-extended.vercel.app/api/top-langs/?username=ErickSalazar07&langs_count=5&theme=nord"
+    alt="Top Languages"
+  />
+</p>
 
 ---
 
