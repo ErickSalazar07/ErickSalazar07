@@ -1,8 +1,8 @@
 setopt prompt_subst
 autoload -Uz vcs_info # load vcs_info
-zstyle ':vcs_info:*' enable git # enable Git support
 
-# git prompt format
+# enable git support and define git format
+zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats '%F{208}( %b)%f'
 zstyle ':vcs_info:git:*' actionformats '%F{67}( %b|%a)%f'
 
@@ -11,4 +11,14 @@ precmd() {
     vcs_info
 }
 
-PROMPT='%(?.%F{29}.%F{124})➜%f %F{69}%1~%f%F{252}:%f${vcs_info_msg_0_}%F{252}$%f '
+# ssh prompt
+[[ -n "$SSH_CLIENT" || -n "$SSH_TTY" ]] && SSH_PROMPT='%F{222}(ssh)%f'
+
+# main prompt
+MAIN_PROMPT='%(?.%F{29}.%F{124})➜%f %F{69}%1~%f%F{252}:%f'
+
+# ending prompt
+END_PROMPT='%F{252}$%f'
+
+
+PROMPT='${SSH_PROMPT}${MAIN_PROMPT}${vcs_info_msg_0_}${END_PROMPT} '
