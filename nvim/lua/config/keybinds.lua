@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>d", "<cmd>bdelete<CR>", { desc = "Close window" })
 vim.keymap.set("n", "<leader>D", "<cmd>bdelete!<CR>", { desc = "Force close window" })
 vim.keymap.set("n", "<leader>q", "<cmd>wqa<CR>", { desc = "Save and quit all" })
+vim.keymap.set("n", "<leader>Q", "<cmd>qa!<CR>", { desc = "Force quit all" })
 vim.keymap.set("n", "<leader>n", "<cmd>enew<CR>", { desc = "New buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Next buffer" })

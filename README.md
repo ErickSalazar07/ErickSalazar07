@@ -53,9 +53,17 @@ pentesting** from a hands-on perspective.
 
 ## GitHub Metrics
 
-![](https://github-readme-stats.vercel.app/api?username=ErickSalazar07&show_icons=true&hide_border=true&rank_icon=github)
-
-![](https://github-readme-activity-graph.vercel.app/graph?username=ErickSalazar07&hide_border=true)
+<p>
+  <img
+    src="https://github-stats-extended.vercel.app/api/?username=ErickSalazar07&show_icons=true&theme=nord&rank_icon=github&include_all_commits=true&custom_title=Erick's+Stats&number_format=long&show=prs_merged_percentage,prs_reviewed"
+    alt="GitHub Stats"
+  />
+  &ensp;&ensp;&ensp;&ensp; <!-- space between metrics -->
+  <img
+    src="https://github-stats-extended.vercel.app/api/top-langs/?username=ErickSalazar07&langs_count=5&theme=nord"
+    alt="Top Languages"
+  />
+</p>
 
 ---
 

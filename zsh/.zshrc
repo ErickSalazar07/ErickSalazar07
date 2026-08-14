@@ -37,3 +37,5 @@ done
 for f in "$ZDOTDIR/config"/*.zsh; do
   source "$f"
 done
+
+source "$ZDOTDIR/nvm.zsh"

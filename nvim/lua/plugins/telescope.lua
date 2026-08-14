@@ -36,18 +36,5 @@ return {
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
     vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help tags" })
-
-    vim.api.nvim_create_autocmd("VimEnter", {
-      callback = function()
-        local argc = vim.fn.argc()
-        local is_scratch = vim.env.NVIM_SCRATCH == "1"
-
-        if argc == 0 and not is_scratch then
-          vim.schedule(function()
-            builtin.find_files()
-          end)
-        end
-      end,
-    })
   end,
 }
