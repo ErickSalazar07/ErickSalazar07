@@ -4,7 +4,7 @@ autoload -Uz vcs_info # load vcs_info
 # enable git support and define git format
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats '%F{208}( %b)%f'
-zstyle ':vcs_info:git:*' actionformats '%F{67}( %b|%a)%f'
+zstyle ':vcs_info:git:*' actionformats '%F{204}( %b|%a)%f'
 
 # update vcs_info before displaying the prompt
 precmd() {

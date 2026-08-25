@@ -57,11 +57,14 @@ end
 -- code edition management
 vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Moves code in visual mode to 1 line upper" })
 vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Moves code in visual mode to 1 line down" })
-vim.keymap.set({ "n", "x" }, "gq", dynamic_gq, {
-  expr = true,
-  desc = "Dynamic gq based on window width",
-})
-
+vim.keymap.set({ "n", "x" }, "gq", dynamic_gq, { expr = true, desc = "Dynamic gq based on window width" })
+vim.keymap.set("i", "<C-f>",
+  function()
+    vim.fn.search("<++>")
+    vim.cmd.normal("4xa")
+  end,
+  { desc = "Buscar y eliminar <++>" }
+)
 -- netrw management
 vim.keymap.set("n", "<leader>t", vim.cmd.Ex, { desc = "Open Explore command" })
 vim.api.nvim_create_autocmd("FileType", {
@@ -70,5 +73,5 @@ vim.api.nvim_create_autocmd("FileType", {
     local opts = { buffer = true, remap = true }
     vim.keymap.set("n", "l", "<CR>", opts)
     vim.keymap.set("n", "h", "-", opts)
-  end,
+  end
 })
